@@ -1,4 +1,4 @@
-import logo from './logo.svg';
+
 import './App.css';
 
 function App() {
@@ -103,7 +103,53 @@ setShowScore(false);
 
   return (
     <div className="App">
-      
+      <a
+          className="App-link"
+          href="https://reactjs.org"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Learn React
+        </a>
+            {showScore ? (
+                <div className='score-section'>
+                    <Banner/>
+                    You have answered {score} / {Questionbank.length} Correctly
+                    <>
+                       <Button type="submit" onClick={resetQuiz} text = "Start Quiz"></Button>
+                    </>
+                </div>
+            )
+                : (
+                    <>
+                    <h1>Quizz App</h1>
+                      {!showQuiz && <Button  onClick={() => handleQuizButton()} text = "Start Quiz"></Button>}
+                      {showQuiz && (
+                        <div>
+                        <div className='question-section'>
+                            <div className='question-count'>
+                               <span>{currentQuestion+1}</span>/{Questionbank.length}
+                            </div>
+
+                            <div className='question-text'>
+                             {Questionbank[currentQuestion].Question}
+                            </div>
+                        </div>
+
+                        <div className='answer-section'>
+                          {Questionbank[currentQuestion].Answers.map((answer)=>
+                          (
+                              <button onClick={()=>handleAnswerResponse(answer.isCorrect)}>{answer.Answer}</button>
+                          ))}
+                         <Button>{text()}
+                          </Button>
+                        </div>
+                        
+                         </div>)}
+                    </>
+                )
+            }
+
     </div>
   );
 }
