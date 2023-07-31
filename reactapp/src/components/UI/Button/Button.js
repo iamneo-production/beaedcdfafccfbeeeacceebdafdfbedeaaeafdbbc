@@ -1,10 +1,4 @@
-import React from 'react'
-import { useState } from 'react';
-
-interface ButtonProps {
-    onClick: () => void;
-    text : String;
-}
+import {React} from 'react'
 
 const ButtonFunc = (text) => {
     if(text === ""){
